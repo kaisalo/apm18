@@ -1,11 +1,19 @@
 plugins {
     id 'java'
     id 'application'
+	id 'war'
+	id 'org.akhikhl.gretty' version '2.0.0'
 }
 
 mainClassName = 'App'
 
 dependencies {
+	compileOnly 'org.eclipse.jetty:jetty-runner:9.4.9.v20180320',
+		'javax.servlet:javax.servlet-api:3.1.0',
+		'org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.2.Final',
+		'javax.validation:validation-api:2.0.1.Final',
+		'javax.ws.rs:javax.ws.rs-api:2.1',
+		'javax.ejb:javax.ejb-api:3.2.2'
     compile 'com.google.guava:guava:23.0'
     testCompile 'junit:junit:4.12'
 }
@@ -13,3 +21,16 @@ dependencies {
 repositories {
     jcenter()
 }
+task copyToLib(type: Copy) {
+    into "$buildDir/server"				//Default $buildDir is build/
+    from(configurations.compileOnly) {	//Note the use of the name of dependency 
+        include "jetty-runner*"			// configuration "compileOnly"
+        rename { String fileName -> 		//Forget the version # from filename
+"jetty-runner.jar"   
+        }
+    }
+}
+task stage {
+    dependsOn clean, war, copyToLib 
+}
+war.mustRunAfter clean	
