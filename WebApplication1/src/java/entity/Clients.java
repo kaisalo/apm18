@@ -36,16 +36,16 @@ public class Clients implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
+    //@NotNull
     @Column(name = "clientid")
     private Integer clientid;
     @Basic(optional = false)
-    @NotNull
+    //@NotNull
     @Size(min = 1, max = 255)
     @Column(name = "clientname")
     private String clientname;
     @Basic(optional = false)
-    @NotNull
+    //@NotNull
     @Size(min = 1, max = 255)
     @Column(name = "billingaddress")
     private String billingaddress;
@@ -53,7 +53,7 @@ public class Clients implements Serializable {
     @Column(name = "postalcode")
     private String postalcode;
     @Basic(optional = false)
-    @NotNull
+    //@NotNull
     @Size(min = 1, max = 255)
     @Column(name = "clientaddress")
     private String clientaddress;

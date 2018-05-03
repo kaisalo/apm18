@@ -41,15 +41,15 @@ public class Tasks implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
+    //@NotNull
     @Column(name = "taskid")
     private Integer taskid;
     @Basic(optional = false)
-    @NotNull
+    //@NotNull
     @Column(name = "locid")
     private int locid;
     @Basic(optional = false)
-    @NotNull
+    //@NotNull
     @Size(min = 1, max = 255)
     @Column(name = "taskname")
     private String taskname;
@@ -57,7 +57,7 @@ public class Tasks implements Serializable {
     @Column(name = "taskdescription")
     private String taskdescription;
     @Basic(optional = false)
-    @NotNull
+    //@NotNull
     @Column(name = "startdate")
     @Temporal(TemporalType.DATE)
     private Date startdate;

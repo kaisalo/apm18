@@ -36,21 +36,18 @@ public class Locations implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
+    //@NotNull
     @Column(name = "locid")
     private Integer locid;
     @Basic(optional = false)
-    @NotNull
+    //@NotNull
     @Column(name = "clientid")
     private int clientid;
-    @Size(max = 255)
-    @Column(name = "locname")
+    @Column(name = "locname", length = 255)
     private String locname;
-    @Size(max = 255)
-    @Column(name = "locstreetaddress")
+    @Column(name = "locstreetaddress", length = 255)
     private String locstreetaddress;
-    @Size(max = 255)
-    @Column(name = "loccity")
+    @Column(name = "loccity", length = 255)
     private String loccity;
 
     public Locations() {

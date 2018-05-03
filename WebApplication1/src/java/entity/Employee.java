@@ -26,29 +26,29 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Employee.findByLastname", query = "SELECT e FROM Employee e WHERE e.lastname = :lastname")
     , @NamedQuery(name = "Employee.findByContact", query = "SELECT e FROM Employee e WHERE e.contact = :contact")})
 public class Employee implements Serializable {
-
+    private static final long serialVersionUID = 1L;
+    @Id
     @Basic(optional = false)
-    @NotNull
+    //@NotNull
+    @Column(name = "employeeid")
+    private Integer employeeid;
+    @Basic(optional = false)
+    //@NotNull
     @Size(min = 1, max = 255)
     @Column(name = "firstname")
     private String firstname;
     @Basic(optional = false)
-    @NotNull
+    //@NotNull
     @Size(min = 1, max = 255)
     @Column(name = "lastname")
     private String lastname;
     @Basic(optional = false)
-    @NotNull
+    //@NotNull
     @Size(min = 1, max = 255)
     @Column(name = "contact")
     private String contact;
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "employeeid")
-    private Integer employeeid;
+    
 
     public Employee() {
     }

@@ -43,22 +43,22 @@ public class Worklogs implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
+    //@NotNull
     @Column(name = "worklogid")
     private Integer worklogid;
     @Column(name = "taskid")
     private Integer taskid;
     @Basic(optional = false)
-    @NotNull
+    //@NotNull
     @Column(name = "employeeid")
     private int employeeid;
     @Basic(optional = false)
-    @NotNull
+    //@NotNull
     @Column(name = "date")
     @Temporal(TemporalType.DATE)
     private Date date;
     @Basic(optional = false)
-    @NotNull
+    //@NotNull
     @Column(name = "hours")
     private float hours;
     @Size(max = 255)
