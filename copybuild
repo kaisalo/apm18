@@ -1,13 +1,20 @@
 plugins {
+    id 'java'
+    id 'application'
 	id 'war'
+	id "com.heroku.sdk.heroku-gradle" version "1.0.1"
+	id 'org.akhikhl.gretty' version '2.0.0'
 }
+
+mainClassName = 'App'
 
 dependencies {
 	compileOnly 'org.eclipse.jetty:jetty-runner:9.4.9.v20180320',
-		'javax.servlet:javax.servlet-api:3.1.0', 'org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.2.Final',
+		'javax.servlet:javax.servlet-api:3.1.0',		'org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.2.Final',
 		'javax.validation:validation-api:2.0.1.Final',
+		'javax.ws.rs:javax.ws.rs-api:2.1',
 		'javax.ejb:javax.ejb-api:3.2.2'
-	compile 'javax.ws.rs:javax.ws.rs-api:2.1'
+    compile 'com.google.guava:guava:23.0'
     testCompile 'junit:junit:4.12'
 }
 
@@ -23,7 +30,6 @@ task copyToLib(type: Copy) {
         }
     }
 }
-
 task stage {
     dependsOn clean, war, copyToLib 
 }
