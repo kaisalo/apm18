@@ -72,7 +72,6 @@ public class Employee implements Serializable {
         this.employeeid = employeeid;
     }
 
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -121,5 +120,5 @@ public class Employee implements Serializable {
     public void setContact(String contact) {
         this.contact = contact;
     }
-    
+
 }
