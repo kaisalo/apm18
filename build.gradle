@@ -8,7 +8,7 @@ plugins {
 mainClassName = 'App'
 
 dependencies {
-	compileOnly 'org.eclipse.jetty:jetty-runner:9.2.22.v20170606',
+	compileOnly 'org.eclipse.jetty:jetty-runner:9.4.10.RC1',
 		'javax.servlet:javax.servlet-api:3.1.0',		'org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.2.Final',
 		'javax.validation:validation-api:2.0.1.Final',
 		'javax.ws.rs:javax.ws.rs-api:2.1',
