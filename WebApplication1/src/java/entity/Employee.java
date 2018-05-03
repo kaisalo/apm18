@@ -27,12 +27,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Employee.findByContact", query = "SELECT e FROM Employee e WHERE e.contact = :contact")})
 public class Employee implements Serializable {
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @Basic(optional = false)
-    @NotNull
-    @Column(name = "employeeid")
-    private Integer employeeid;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
@@ -48,6 +42,13 @@ public class Employee implements Serializable {
     @Size(min = 1, max = 255)
     @Column(name = "contact")
     private String contact;
+
+    private static final long serialVersionUID = 1L;
+    @Id
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "employeeid")
+    private Integer employeeid;
 
     public Employee() {
     }
@@ -71,29 +72,6 @@ public class Employee implements Serializable {
         this.employeeid = employeeid;
     }
 
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public String getContact() {
-        return contact;
-    }
-
-    public void setContact(String contact) {
-        this.contact = contact;
-    }
 
     @Override
     public int hashCode() {
@@ -118,6 +96,30 @@ public class Employee implements Serializable {
     @Override
     public String toString() {
         return "entity.Employee[ employeeid=" + employeeid + " ]";
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact;
     }
     
 }
