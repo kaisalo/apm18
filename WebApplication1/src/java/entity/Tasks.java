@@ -50,11 +50,9 @@ public class Tasks implements Serializable {
     private int locid;
     @Basic(optional = false)
     //@NotNull
-    @Size(min = 1, max = 255)
-    @Column(name = "taskname")
+    @Column(name = "taskname", length = 255)
     private String taskname;
-    @Size(max = 255)
-    @Column(name = "taskdescription")
+    @Column(name = "taskdescription", length = 255)
     private String taskdescription;
     @Basic(optional = false)
     //@NotNull

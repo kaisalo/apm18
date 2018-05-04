@@ -1,1 +1,1 @@
-web: java -jar build/server/jetty-runner.jar --port $PORT build/libs/apm.war
+web: java -jar build/server/jetty-runner.jar --port $PORT build/libs/workhour.war

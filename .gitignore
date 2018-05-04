@@ -1,4 +1,5 @@
 /WebApplication1/build/
+<<<<<<< HEAD
 
 
 # .gitignore NetBeans Gradle projects
@@ -24,3 +25,6 @@ logs/
 .idea/
 *.iml
 *.iws
+=======
+/.nb-gradle/
+>>>>>>> 780034cddfaf9b72a72d8e04c7e9d524d691ee89
