@@ -38,6 +38,7 @@ public class TasksFacadeREST extends AbstractFacade<Tasks> {
     @POST
     @Override
     @Consumes({MediaType.APPLICATION_JSON})
+    @Produces(MediaType.APPLICATION_JSON)
     public void create(Tasks entity) {
         super.create(entity);
     }

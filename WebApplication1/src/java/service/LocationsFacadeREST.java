@@ -38,6 +38,7 @@ public class LocationsFacadeREST extends AbstractFacade<Locations> {
     @POST
     @Override
     @Consumes({MediaType.APPLICATION_JSON})
+    @Produces(MediaType.APPLICATION_JSON)
     public void create(Locations entity) {
         super.create(entity);
     }

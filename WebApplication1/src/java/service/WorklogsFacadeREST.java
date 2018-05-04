@@ -38,6 +38,7 @@ public class WorklogsFacadeREST extends AbstractFacade<Worklogs> {
     @POST
     @Override
     @Consumes({MediaType.APPLICATION_JSON})
+    @Produces(MediaType.APPLICATION_JSON)
     public void create(Worklogs entity) {
         super.create(entity);
     }
