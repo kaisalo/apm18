@@ -61,11 +61,9 @@ public class Worklogs implements Serializable {
     //@NotNull
     @Column(name = "hours")
     private float hours;
-    @Size(max = 255)
-    @Column(name = "workdescription")
+    @Column(name = "workdescription", length = 255)
     private String workdescription;
-    @Size(max = 255)
-    @Column(name = "additionalinfo")
+    @Column(name = "additionalinfo", length = 255)
     private String additionalinfo;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "kilometres")

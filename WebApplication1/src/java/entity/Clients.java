@@ -41,21 +41,17 @@ public class Clients implements Serializable {
     private Integer clientid;
     @Basic(optional = false)
     //@NotNull
-    @Size(min = 1, max = 255)
-    @Column(name = "clientname")
+    @Column(name = "clientname", length = 255)
     private String clientname;
     @Basic(optional = false)
     //@NotNull
-    @Size(min = 1, max = 255)
-    @Column(name = "billingaddress")
+    @Column(name = "billingaddress", length = 255)
     private String billingaddress;
-    @Size(max = 255)
-    @Column(name = "postalcode")
+    @Column(name = "postalcode", length = 255)
     private String postalcode;
     @Basic(optional = false)
     //@NotNull
-    @Size(min = 1, max = 255)
-    @Column(name = "clientaddress")
+    @Column(name = "clientaddress", length = 255)
     private String clientaddress;
 
     public Clients() {

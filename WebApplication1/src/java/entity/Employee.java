@@ -34,18 +34,15 @@ public class Employee implements Serializable {
     private Integer employeeid;
     @Basic(optional = false)
     //@NotNull
-    @Size(min = 1, max = 255)
-    @Column(name = "firstname")
+    @Column(name = "firstname", length = 255)
     private String firstname;
     @Basic(optional = false)
     //@NotNull
-    @Size(min = 1, max = 255)
-    @Column(name = "lastname")
+    @Column(name = "lastname", length = 255)
     private String lastname;
     @Basic(optional = false)
     //@NotNull
-    @Size(min = 1, max = 255)
-    @Column(name = "contact")
+    @Column(name = "contact", length = 255)
     private String contact;
 
     
