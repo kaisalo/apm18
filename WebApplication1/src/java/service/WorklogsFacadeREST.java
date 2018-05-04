@@ -25,7 +25,7 @@ import javax.ws.rs.core.MediaType;
  * @author kaisa
  */
 @Stateless
-@Path("entity.worklogs")
+@Path("worklog")
 public class WorklogsFacadeREST extends AbstractFacade<Worklogs> {
 
     @PersistenceContext(unitName = "WebApplication1PU")

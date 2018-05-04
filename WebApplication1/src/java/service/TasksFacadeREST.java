@@ -25,7 +25,7 @@ import javax.ws.rs.core.MediaType;
  * @author kaisa
  */
 @Stateless
-@Path("entity.tasks")
+@Path("task")
 public class TasksFacadeREST extends AbstractFacade<Tasks> {
 
     @PersistenceContext(unitName = "WebApplication1PU")
