@@ -1,0 +1,433 @@
+@import url(https://fonts.googleapis.com/css?family=Dosis:300|Lato:300,400,600,700|Roboto+Condensed:300,700|Open+Sans+Condensed:300,600|Open+Sans:400,300,600,700|Maven+Pro:400,700);
+@import url("https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
+html {
+  background-image: url(pics/bg.jpg);
+  background-position: center -22em;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+body {
+  padding: 0px;
+  margin: 0px;
+  font-family: "Roboto";
+  font-size: 18px;
+  font-smoothing: antialiased;
+}
+
+a {
+    color: #0060B6;
+    text-decoration: none;
+}
+
+.page {
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  left: 10%;
+  top: 10%;
+  background-color: rgba(255, 255, 255, 0.7);
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  -moz-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
+}
+
+.pageHeader {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  background-color: #54b9cd;
+  color: White;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 5px 20px;
+  vertical-align: middle;
+}
+.pageHeader .title {
+  width: 40%;
+  float: left;
+  line-height: 40px;
+  font-size: 1.5em;
+  font-weight: 700;
+}
+.pageHeader .userPanel {
+  width: 40%;
+  float: right;
+}
+.pageHeader .userPanel i {
+  float: right;
+  line-height: 40px;
+  padding-right: 10px;
+}
+.pageHeader .userPanel .username {
+  float: right;
+  line-height: 40px;
+  padding: 0px 20px;
+  font-weight: 900;
+  font-size: 1em;
+}
+.pageHeader .userPanel img {
+  float: right;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.main {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  clear: both;
+  background-color: white;
+}
+.main .nav {
+  width: 200px;
+  height: 100%;
+  float: left;
+  background-color: rgba(227, 234, 235, 0.8);
+}
+.main .nav .searchbox {
+  width: 170px;
+  height: 30px;
+  line-height: 30px;
+  margin: 15px;
+  background-color: White;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+}
+.main .nav .searchbox i {
+  display: inline-block;
+  color: #bbb;
+  margin-left: 5px;
+  margin-right: 5px;
+  font-size: 16px;
+}
+.main .nav .searchbox input {
+  display: inlin-block;
+  width: 120px;
+  background-color: White;
+  color: Black;
+  font-family: "Lato";
+  border: 0px;
+}
+.main .nav .menu {
+  width: 100%;
+  margin: 15px;
+  color: #555;
+}
+.main .nav .menu .title {
+  font-weight: 700;
+  font-size: 1em;
+  text-transform: uppercase;
+}
+.main .nav .menu ul {
+  padding-left: 0px;
+}
+.main .nav .menu ul li {
+  cursor: pointer;
+  list-style: none;
+  margin: 5px 0px;
+  padding: 5px 0px;
+  font-weight: 600;
+  margin-right: 30px;
+  padding-left: 10px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  transition: 0.25s all;
+}
+.main .nav .menu ul li.active {
+  background-color: #79bc46;
+}
+.main .nav .menu ul li:hover {
+  background-color: #999;
+}
+.main .nav .menu ul li i {
+  font-size: 1.4em;
+  margin-right: 10px;
+}
+.main .view {
+  position: relative;
+  margin-left: 200px;
+}
+
+.main .view #content {
+  padding: 1em;
+}
+
+.main .view .viewHeader {
+  width: 100%;
+  height: 70px;
+  line-height: 70px;
+  padding: 20px 20px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border-bottom: 1px solid #e0e0e0;
+}
+.main .view .viewHeader .title {
+  float: left;
+  font-size: 1.4em;
+  font-weight: 400;
+  padding: 0px;
+  color: #aaa;
+  margin-top: -18px;
+}
+.main .view .viewHeader .functions {
+  float: right;
+}
+.main .view .viewHeader .functions .button {
+  float: right;
+  height: 30px;
+  line-height: 30px;
+  background-color: #aaa;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  margin: 0px 5px;
+  padding: 0px 20px;
+  cursor: pointer;
+  color: White;
+  font-weight: 700;
+}
+.main .view .viewHeader .functions .button.active {
+  background-color: #54b9cd;
+}
+.main .view .viewHeader .functions .button.inverz {
+  background-color: inherit;
+  border: 1px solid #aaa;
+  width: 10px;
+  color: #aaa;
+  font-size: 1.3em;
+  padding-left: 10px;
+  padding-right: 16px;
+}
+.main .view .content {
+  position: absolute;
+  left: 0px;
+  top: 70px;
+  right: 0px;
+  bottom: 0px;
+  padding: 10px;
+}
+.main .view .content .list .title {
+  width: 100%;
+  padding: 10px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #54b9cd;
+}
+.main .view .content .list ul {
+  width: 100%;
+  padding-left: 10px;
+  color: #777;
+}
+.main .view .content .list ul li {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  list-style: none;
+  border-top: 1px solid #aaa;
+}
+.main .view .content .list ul li.checked {
+  background-color: #f0f4f5;
+}
+.main .view .content .list ul li:last-child {
+  border-bottom: 1px solid #aaa;
+}
+.main .view .content .list ul li i {
+  float: left;
+  width: 30px;
+  height: 50px;
+  line-height: 50px;
+  margin-left: 10px;
+  font-size: 1.3em;
+}
+.main .view .content .list ul li span {
+  float: left;
+  font-weight: 300;
+}
+.main .view .content .list ul li .info {
+  float: right;
+}
+.main .view .content .list ul li .info span {
+  font-weight: 300;
+}
+.main .view .content .list ul li .info .button {
+  float: right;
+  width: 100px;
+  height: 30px;
+  line-height: 30px;
+  background-color: #aaa;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  margin: 10px 10px;
+  text-align: center;
+  cursor: pointer;
+  color: White;
+  font-weight: 700;
+}
+.main .view .content .list ul li .info .button.green {
+  background-color: #85c157;
+}
+
+.clear {
+  clear: both;
+}
+
+#task-list {
+    position: relative;
+    height: 93%;
+    -webkit-box-shadow: -0.063em 0.125em 1.188em 0.188em rgba(0,0,0,0.75);
+    -moz-box-shadow: -0.063em 0.125em 1.188em 0.188em rgba(0,0,0,0.75);
+    box-shadow: -0.063em 0.125em 1.188em 0.188em rgba(0,0,0,0.75);
+}
+
+#list, #new-list, #cplt-list, #cancel-list, #in-process-list {
+    overflow: auto;
+    height: 31.488em;
+    padding: 1em;
+    width: 93%;
+    margin: auto;
+}
+
+.task-on-list, .task-cancelled, .task-cplted, .task-new {
+    position: relative;
+    margin: 1em;
+    padding: 0.625em;
+    list-style: none;
+    border: 1px solid #878787;
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);
+}
+
+#waiting-task {
+    z-index: 1;
+}
+
+#finished-task{
+    z-index: 0;
+}
+
+.add-btn{
+    height: 5em;
+    width: 5em; 
+}
+
+.add-btn-form{
+    position: absolute;
+    top: 85%;
+    right: 2%;
+}
+
+#hidden-add-form{
+    width: 23em;
+    height: 27em;
+    position: absolute;
+    padding: 1.25em;
+    visibility: hidden;
+    position:absolute;
+    top: 38%;
+    left: 55%;
+    margin-top: -12.5em; /*set to a negative number 1/2 of your height*/
+    margin-left: -12.5em; /*set to a negative number 1/2 of your width*/
+    border: 1px solid #ccc;
+    background-color: #f3f3f3;
+}
+
+#form-header, #cancel{
+  display: inline;
+}
+
+#cancel {
+  cursor: pointer;
+  float: right;
+  font-size: 1.25em;
+  font-weight: 700;
+}
+
+.same-line-input{
+    position: relative;
+    margin-top: 0.75em;
+    width: 23em;
+    height: 3em;
+}
+
+.in-block-input-dep{
+    display: inline;
+    float: right;
+}
+
+.in-block-input-pl{
+    display: inline;
+    float: left;
+}
+
+.descp-form {
+    height: 11.2em;
+}
+
+#description{
+    margin-top: 0.5em;
+}
+
+#form-submit {
+    height: 2.8em;
+    width: 5em;
+    position: absolute;
+    right: 1em;
+    bottom: 1.5em
+}
+
+#select{
+    width: 10em;
+}
+
+.urgent-form {
+    margin: 0.25em 0; 
+}
+
+.task-list-btn-cross {
+    position: absolute;
+    top: 1em;
+    right: 3.625em;
+    background-color: #009f45;
+    color: #fff;
+    border-radius: 50%;
+}
+
+.task-list-btn-check {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+    background-color: #fe0084;
+    color: #fff;
+    border-radius: 50%;
+}
+
+.done-btn {
+    text-transform: uppercase;
+    position: absolute;
+    right: 1em;
+    top: 1em;
+    height: 2.8em;
+    width: 7em;
+    background-color: #009f45;
+    color: #fff;
+}
+
+.task-image {
+    height: 12em;
+    width: 10em;
+}
+
+.disabled{
+    display: none;
+}
