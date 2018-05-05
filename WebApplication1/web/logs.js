@@ -412,3 +412,88 @@ function doneTask(e) {
     delDoneBtn();
     delProcTime();
 } // function of DONE button to move to task to completed task list
+
+/*--------------------------------------------------------------------------
+----------------------------------------------------------------------------
+--------------------------------------------------------------------------*/
+
+let apiUrl = 'wr/'
+
+// Fetch work logs from database 
+
+fetch(apiUrl + 'worklog')
+    .then(res => res.json())
+    .then(function(json) {
+        logsFetch(json)
+    })
+    .catch(err => console.log(err))
+
+const logsFetch = logs => {
+    let htmlString = ''
+    let taskDesc = ''
+    let taskName = ''
+    
+    for (let log of logs) {
+        fetch(apiUrl + 'task/' + log.taskid)
+            .then(res => res.json())
+            .then(json => {
+                taskName = json.taskname 
+                taskDesc = json.taskdescription
+                htmlString += 
+                    `<li class="task-on-list task-on-${log.worklogid}">
+                        <h3 id="task-header">${log.workdescription}</h3>
+                        <p><strong>Hours: </strong>${log.hours}</p>
+                        <p><strong>Kilometres: </strong>${log.kilometres}</p>
+                        <p><strong>Parking hours: </strong>${log.parking}</p>
+                        <p><strong>Work description: </strong>${log.workdescription}</p>
+                        <p><strong>Task name: </strong>${taskName}</p>
+                        <p><strong>Task description: </strong>${taskDesc}</p>
+                        <p>${log.date}</p>
+                    </li>`   
+                document.querySelector('#waiting-task').innerHTML = htmlString
+            })
+            .catch(err => console.log(err))
+    }
+
+}
+
+
+// Fetch clients
+fetch(apiUrl + 'client')
+    .then(res => res.json())
+    .then(json => clientsFetch(json))
+    .catch(err => console.log(err))
+
+const clientsFetch = clients => {
+    let htmlString = `<option value='' selected disabled ></option>`
+
+    for (let client of clients) {
+        htmlString += 
+        `<option value="${client.clientid}">${client.clientname}</option>`
+    }
+
+    document.querySelector('#select-client').innerHTML = htmlString
+}
+
+//Fetch locations based on client selections
+
+const getLocations = () => {
+    fetch(apiUrl + 'location')
+        .then(res => res.json())
+        .then(json => locationsFetch(json))
+        .catch(err => console.log(err))
+}
+
+const locationsFetch = locations => {
+    let htmlString = ''
+    let clientSelected = document.querySelector('#select-client').value
+    console.log(clientSelected)
+    for (let location of locations) {
+        if (location.clientid == clientSelected) {
+            htmlString +=
+                `<option value='${location.locname}'>${location.locname}: ${location.locstreetaddress}, ${location.loccity}</option>`
+        }
+    }
+
+    document.querySelector('#select-location').innerHTML = htmlString
+}

@@ -105,7 +105,7 @@ a {
     font-size: 16px;
 }
 .main .nav .searchbox input {
-    display: inlin-block;
+    display: inline-block;
     width: 120px;
     background-color: White;
     color: Black;
@@ -230,6 +230,7 @@ a {
     line-height: 50px;
     list-style: none;
     border-top: 1px solid #aaa;
+    padding: 0 5px;
 }
 .main .view .content .list ul li.checked {
     background-color: #f0f4f5;
@@ -357,18 +358,17 @@ a {
     height: 3em;
 }
 
-.in-block-input-dep{
-    display: inline;
+.in-block-input-location{
     float: right;
 }
 
-.in-block-input-pl{
-    display: inline;
+.in-block-input-client{
     float: left;
 }
 
 .descp-form {
     height: 11.2em;
+    margin-top: 5px;
 }
 
 #description{
@@ -427,4 +427,8 @@ a {
 
 .disabled{
     display: none;
+}
+
+#my-form > input#hours, #my-form > input#kms {
+    margin: 5px 0;
 }
