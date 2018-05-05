@@ -2,13 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/kaisa/Desktop/Koulu/4th%20period/apm/WebApplication1/src/java/entity/Locations.java</file>
-            <file>file:/C:/Users/kaisa/Desktop/Koulu/4th%20period/apm/WebApplication1/web/index.html</file>
-            <file>file:/C:/Users/kaisa/Desktop/Koulu/4th%20period/apm/WebApplication1/src/java/entity/Tasks.java</file>
-            <file>file:/C:/Users/kaisa/Desktop/Koulu/4th%20period/apm/WebApplication1/src/java/service/EmployeeFacadeREST.java</file>
-            <file>file:/C:/Users/kaisa/Desktop/Koulu/4th%20period/apm/WebApplication1/src/java/service/ClientsFacadeREST.java</file>
-            <file>file:/C:/Users/kaisa/Desktop/Koulu/4th%20period/apm/WebApplication1/src/java/service/LocationsFacadeREST.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
