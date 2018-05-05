@@ -1,9 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Dosis:300|Lato:300,400,600,700|Roboto+Condensed:300,700|Open+Sans+Condensed:300,600|Open+Sans:400,300,600,700|Maven+Pro:400,700);
 @import url("https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
 html {
-    background-image: url(pics/bg.jpg);
-    background-position: center -22em;
-    background-repeat: no-repeat;
+    background: url(pics/bg.jpg) no-repeat center center fixed;
     background-size: cover;
 }
 
@@ -12,7 +10,6 @@ body {
     margin: 0px;
     font-family: "Roboto";
     font-size: 18px;
-    font-smoothing: antialiased;
 }
 
 a {

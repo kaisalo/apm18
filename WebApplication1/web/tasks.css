@@ -1,9 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Dosis:300|Lato:300,400,600,700|Roboto+Condensed:300,700|Open+Sans+Condensed:300,600|Open+Sans:400,300,600,700|Maven+Pro:400,700);
 @import url("https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css");
 html {
-    background-image: url(pics/bg.jpg);
-    background-position: center -22em;
-    background-repeat: no-repeat;
+    background: url(pics/bg.jpg) no-repeat center center fixed;
     background-size: cover;
 }
 
@@ -12,7 +10,6 @@ body {
     margin: 0px;
     font-family: "Roboto";
     font-size: 18px;
-    font-smoothing: antialiased;
 }
 
 a {
@@ -270,6 +267,69 @@ a {
 }
 .main .view .content .list ul li .info .button.green {
     background-color: #85c157;
+}
+
+#hidden-add-form{
+    width: 23em;
+    height: 27em;
+    position: absolute;
+    padding: 1.25em;
+    visibility: hidden;
+    position:absolute;
+    top: 38%;
+    left: 55%;
+    margin-top: -12.5em; /*set to a negative number 1/2 of your height*/
+    margin-left: -12.5em; /*set to a negative number 1/2 of your width*/
+    border: 1px solid #ccc;
+    background-color: #f3f3f3;
+}
+
+#form-header, #cancel{
+  display: inline;
+}
+
+#cancel {
+  cursor: pointer;
+  float: right;
+  font-size: 1.25em;
+  font-weight: 700;
+}
+
+.same-line-input{
+    position: relative;
+    margin-top: 0.75em;
+    width: 23em;
+    height: 3em;
+}
+
+.in-block-input-dep{
+    display: inline;
+    float: right;
+}
+
+.in-block-input-pl{
+    display: inline;
+    float: left;
+}
+
+.descp-form {
+    height: 11.2em;
+}
+
+#description{
+    margin-top: 0.5em;
+}
+
+#form-submit {
+    height: 2.8em;
+    width: 5em;
+    position: absolute;
+    right: 1em;
+    bottom: 1.5em
+}
+
+#select{
+    width: 10em;
 }
 
 .clear {

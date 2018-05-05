@@ -44,16 +44,14 @@ function getDate() {
 
 function addButton() {
     document.getElementById("hidden-add-form").style.visibility = "visible";
-}
-; //The plus sign button that shows the form
+}; //The plus sign button that shows the form
 
 function cancelButton() {
     document.getElementById("hidden-add-form").style.visibility = "hidden";
     document.getElementById("my-form").reset();
 
     /* document.getElementById('urgent-btn').checked = false; */
-}
-; // The X sign button that cancel add task in the form
+}; // The X sign button that cancel add task in the form
 
 
 function previewFile() {
@@ -80,8 +78,8 @@ function addTask() {
     /* let ulNew = document.getElementById("new-list"); */
     /* let urgent = document.getElementById("urgent-btn"); */
     let nameValue = document.querySelector("#task-name").value;
-    let placeValue = document.querySelector("#task-place").value;
-    let departmentValue = document.querySelector("#select").value;
+    let projectValue = document.querySelector("#select-project").value;
+    let departmentValue = document.querySelector("#select-department").value;
     let desciptionValue = document.querySelector("#description").value;
 
     let li = document.createElement("li");
@@ -102,15 +100,15 @@ function addTask() {
         li.appendChild(taskHeader);
     }
 
-    if (placeValue != "") {
-        let placeHeader = document.createElement("p");
-        placeHeader.setAttribute("id", "place-header");
-        let placeContent = document.createElement("strong");
-        placeContent.append(document.createTextNode("Place: "));
-        placeContent.setAttribute("class", "listItemHeader");
-        placeHeader.append(placeContent);
-        placeHeader.append(document.createTextNode(placeValue));
-        li.appendChild(placeHeader);
+    if (projectValue != "") {
+        let projectHeader = document.createElement("p");
+        projectHeader.setAttribute("id", "project-header");
+        let projectContent = document.createElement("strong");
+        projectContent.append(document.createTextNode("project: "));
+        projectContent.setAttribute("class", "listItemHeader");
+        projectHeader.append(projectContent);
+        projectHeader.append(document.createTextNode(projectValue));
+        li.appendChild(projectHeader);
     }
 
     if (departmentValue != "") {
@@ -177,8 +175,7 @@ function addTask() {
 
     cancelButton();
 
-}
-;  // Submit form function that add other info to task list as a list item
+};  // Submit form function that add other info to task list as a list item
 
 function takeTask(e) {
 
