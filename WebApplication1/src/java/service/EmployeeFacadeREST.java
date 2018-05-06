@@ -39,7 +39,7 @@ public class EmployeeFacadeREST extends AbstractFacade<Employee> {
     @Override
     @Consumes({MediaType.APPLICATION_JSON})
     @Produces(MediaType.APPLICATION_JSON)
-    public Employess create(Employee entity) {
+    public Employee create(Employee entity) {
         super.create(entity);
         return entity;
     }
