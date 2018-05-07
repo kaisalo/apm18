@@ -14,6 +14,11 @@
     font-weight: 300;
 }
 
+#logs-content .task-on-list {
+    display: grid;
+    grid-template-columns: 20% 70% 10%;
+}
+
 #list, #new-list, #cplt-list, #cancel-list, #in-process-list {
     position: relative;
     overflow: auto;

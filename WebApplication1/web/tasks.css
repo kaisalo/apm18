@@ -3,6 +3,7 @@
 html {
   background: url(pics/bg.jpg) no-repeat center center fixed;
   background-size: cover;
+  height: 100%;
 }
 
 body {
@@ -10,6 +11,11 @@ body {
   margin: 0px;
   font-family: "Roboto";
   font-size: 18px;
+  height: 100%;
+}
+
+.page {
+    height: 100%;
 }
 
 .hidden {
@@ -85,13 +91,12 @@ button {
   clear: both;
   display: grid;
   grid-template-columns: 200px auto;
-  grid-template-rows: inherit;
+  grid-template-rows: auto;
   grid-template-areas: "nav" "content";
   background-color: white;
 }
 .main .nav {
-  height: 100%;
-  float: left;
+  
   grid-area: "nav";
   background-color: rgba(227, 234, 235, 0.8);
 }
@@ -322,8 +327,8 @@ button {
   padding: 1.25em;
   visibility: hidden;
   position: absolute;
-  top: 38%;
-  left: 55%;
+  top: 50%;
+  left: 50%;
   margin-top: -12.5em; /*set to a negative number 1/2 of your height*/
   margin-left: -12.5em; /*set to a negative number 1/2 of your width*/
   border: 1px solid #ccc;

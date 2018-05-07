@@ -1,6 +1,17 @@
 document.addEventListener("DOMContentLoaded", function () {
     let taskArray = [];
     let count = 0;
+    let newLogBtn = document.querySelector("#new-log");
+    let cancelBtn = document.querySelector("#cancel");
+    
+    newLogBtn.addEventListener("click", function(event) {
+        addButton();
+    });
+    
+    cancelBtn.addEventListener("click", function(event) {
+        cancelButton();
+        return false;
+    });
 
     function getHour() {
         let day = new Date();
@@ -72,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let departmentValue = document.querySelector("#select-department").value;
         let desciptionValue = document.querySelector("#description").value;
 
-        let li = document.createElement("li");
+        let li = document.createElement("div");
 
         li.setAttribute("class", "task-on-list");
 
@@ -188,7 +199,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         let ulAll = document.getElementById("list");
         let checkAllList = ulAll.children;
-
         for (let b = 0; b < checkAllList.length; b++) {
 
             let newListClass = checkAllList[b].classList;
@@ -415,9 +425,10 @@ document.addEventListener("DOMContentLoaded", function () {
     fetch(apiUrl + 'worklog')
             .then(res => res.json())
             .then(function (json) {
-                logsFetch(json)
+                console.log(json);
+                logsFetch(json);
             })
-            .catch(err => console.log(err))
+            .catch(err => console.log(err));
 
     const logsFetch = logs => {
         let htmlString = '';
@@ -428,22 +439,42 @@ document.addEventListener("DOMContentLoaded", function () {
             fetch(apiUrl + 'task/' + log.taskid)
                     .then(res => res.json())
                     .then(json => {
-                        taskName = json.taskname;
-                        taskDesc = json.taskdescription;
+                        let taskName = json.taskname;
+                        let taskDesc = json.taskdescription;
+                        
+                        /*let div = document.createElement("div");
+                        div.classList.add("task-on-list");
+                        
+                        // let logID = document.createElement("div");
+                        // let workDesc = document.createElement("div");
+                        let logDate = document.createElement("div");
+                        let hours = document.createElement("div");
+                        let kilometres = document.createElement("div");
+                        let taskNameDiv = document.createElement("div");
+                        
+                        logDate.value = log.date;
+                        hours.value = log.hours;
+                        kilometres.value = log.kilometres;
+                        taskNameDiv.value = taskName;
+                        
+                        div.appendChild(logDate);
+                        div.appendChild(taskName);
+                        div.appendChild(hours);
+                        div.appendChild(kilometres);
+                        */
+                        let dateString = log.date;
+                        let dateStr = dateString.split("-");
+                        let dayStr = dateStr[2].split("T");
+                        console.log(dateStr);
                         htmlString +=
-                                `<li class="task-on-list task-on-${log.worklogid}">
-                        <h3 id="task-header">${log.workdescription}</h3>
-                        <p><strong>Hours: </strong>${log.hours}</p>
-                        <p><strong>Kilometres: </strong>${log.kilometres}</p>
-                        <p><strong>Parking hours: </strong>${log.parking}</p>
-                        <p><strong>Work description: </strong>${log.workdescription}</p>
-                        <p><strong>Task name: </strong>${taskName}</p>
-                        <p><strong>Task description: </strong>${taskDesc}</p>
-                        <p>${log.date}</p>
-                    </li>`
-                        document.querySelector('#waiting-task').innerHTML = htmlString
+                                `<div class="task-on-list task-on-${log.worklogid}">
+                                <div><p>${dayStr[0]}.${dateStr[1]}.${dateStr[0]}</p></div>
+                                <div><p>${taskName}</p></div>
+                                <div><p>${log.hours}</p></div>  
+                            </div>` ;
+                        document.querySelector('#waiting-task').innerHTML = htmlString;
                     })
-                    .catch(err => console.log(err))
+                    .catch(err => console.log(err));
         }
 
     };

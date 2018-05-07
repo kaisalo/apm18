@@ -44,7 +44,7 @@
                     <div class="viewHeader" id="tasks">
                         <div class="title">Manage Tasks</div>
                         <div class="functions">
-                            <div class="button active" onclick="addButton()">New Task</div>
+                            <div class="button active" onclick="addButton">New Task</div>
                             <div class="button">Completed</div>
                             <div class="button inverz"><i class="fa fa-trash-o"></i></div>
                         </div>
@@ -52,11 +52,7 @@
                     <div class="viewHeader" id="logs">
                         <div class="title">Work Logs</div>
                         <div class="functions">
-                            <div class="button active" onclick="addButton()">New Log</div>
-                            <div class="button">Completed</div>
-                            <div class="button inverz">
-                                <i class="fa fa-trash-o"></i>
-                            </div>
+                            <div class="button active" id="new-log">New Log</div>
                         </div>
                     </div>
 
@@ -116,15 +112,15 @@
 
                         <form id="my-form">
                             <h2 id="form-header">Add New Task</h2>
-                            <button id="cancel" onclick="cancelButton(); return false;">X</button>
+                            <button id="cancel">X</button>
                             <h3></h3>
-                            <br>User Name<br>
+                            <br><br>
                             <input type="text" id="task-name" placeholder="Last Name, First Name" required />
                             <br>
                             <div class="same-line-input">
 
                                 <div class="in-block-input-pl">
-                                    <span id="task-project"> Project </span>
+                                    <span id="task-project">Client</span>
                                     <br>
                                     <select id="select-project">
                                         <option value = ""></option>
@@ -136,7 +132,20 @@
                                 </div>
 
                                 <div class="in-block-input-dep">
-                                    <span id="department">Department</span>
+                                    <span id="department">Location</span>
+                                    <br>
+                                    <select id="select-department">
+                                        <option value=""></option>
+                                        <option value="Leppävaara">Leppävaara</option>
+                                        <option value="Espookeskus">Espookeskus</option>
+                                        <option value="Myyrmänni">Myyrmänni</option>
+                                        <option value="Kamppi">Kamppi</option>
+                                        <option value="All">All</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="in-block-input-task">
+                                    <span id="department"></span>
                                     <br>
                                     <select id="select-department">
                                         <option value=""></option>
