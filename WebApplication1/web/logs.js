@@ -1,5 +1,4 @@
 let taskArray = [];
-
 let count = 0;
 
 function getHour() {
@@ -44,14 +43,16 @@ function getDate() {
 
 function addButton() {
     document.getElementById("hidden-add-form").style.visibility = "visible";
-}; //The plus sign button that shows the form
+}
+; //The plus sign button that shows the form
 
 function cancelButton() {
     document.getElementById("hidden-add-form").style.visibility = "hidden";
     document.getElementById("my-form").reset();
 
     /* document.getElementById('urgent-btn').checked = false; */
-}; // The X sign button that cancel add task in the form
+}
+; // The X sign button that cancel add task in the form
 
 
 function previewFile() {
@@ -175,7 +176,8 @@ function addTask() {
 
     cancelButton();
 
-};  // Submit form function that add other info to task list as a list item
+}
+;  // Submit form function that add other info to task list as a list item
 
 function takeTask(e) {
 
@@ -414,33 +416,33 @@ function doneTask(e) {
 } // function of DONE button to move to task to completed task list
 
 /*--------------------------------------------------------------------------
-----------------------------------------------------------------------------
---------------------------------------------------------------------------*/
+ ----------------------------------------------------------------------------
+ --------------------------------------------------------------------------*/
 
-let apiUrl = 'wr/'
+let apiUrl = 'wr/';
 
 // Fetch work logs from database 
 
 fetch(apiUrl + 'worklog')
-    .then(res => res.json())
-    .then(function(json) {
-        logsFetch(json)
-    })
-    .catch(err => console.log(err))
+        .then(res => res.json())
+        .then(function (json) {
+            logsFetch(json)
+        })
+        .catch(err => console.log(err))
 
 const logsFetch = logs => {
     let htmlString = ''
     let taskDesc = ''
     let taskName = ''
-    
+
     for (let log of logs) {
         fetch(apiUrl + 'task/' + log.taskid)
-            .then(res => res.json())
-            .then(json => {
-                taskName = json.taskname 
-                taskDesc = json.taskdescription
-                htmlString += 
-                    `<li class="task-on-list task-on-${log.worklogid}">
+                .then(res => res.json())
+                .then(json => {
+                    taskName = json.taskname
+                    taskDesc = json.taskdescription
+                    htmlString +=
+                            `<li class="task-on-list task-on-${log.worklogid}">
                         <h3 id="task-header">${log.workdescription}</h3>
                         <p><strong>Hours: </strong>${log.hours}</p>
                         <p><strong>Kilometres: </strong>${log.kilometres}</p>
@@ -449,10 +451,10 @@ const logsFetch = logs => {
                         <p><strong>Task name: </strong>${taskName}</p>
                         <p><strong>Task description: </strong>${taskDesc}</p>
                         <p>${log.date}</p>
-                    </li>`   
-                document.querySelector('#waiting-task').innerHTML = htmlString
-            })
-            .catch(err => console.log(err))
+                    </li>`
+                    document.querySelector('#waiting-task').innerHTML = htmlString
+                })
+                .catch(err => console.log(err))
     }
 
 }
@@ -460,16 +462,16 @@ const logsFetch = logs => {
 
 // Fetch clients
 fetch(apiUrl + 'client')
-    .then(res => res.json())
-    .then(json => clientsFetch(json))
-    .catch(err => console.log(err))
+        .then(res => res.json())
+        .then(json => clientsFetch(json))
+        .catch(err => console.log(err))
 
 const clientsFetch = clients => {
     let htmlString = `<option value='' selected disabled ></option>`
 
     for (let client of clients) {
-        htmlString += 
-        `<option value="${client.clientid}">${client.clientname}</option>`
+        htmlString +=
+                `<option value="${client.clientid}">${client.clientname}</option>`
     }
 
     document.querySelector('#select-client').innerHTML = htmlString
@@ -479,9 +481,9 @@ const clientsFetch = clients => {
 
 const getLocations = () => {
     fetch(apiUrl + 'location')
-        .then(res => res.json())
-        .then(json => locationsFetch(json))
-        .catch(err => console.log(err))
+            .then(res => res.json())
+            .then(json => locationsFetch(json))
+            .catch(err => console.log(err))
 }
 
 const locationsFetch = locations => {
@@ -491,7 +493,7 @@ const locationsFetch = locations => {
     for (let location of locations) {
         if (location.clientid == clientSelected) {
             htmlString +=
-                `<option value='${location.locname}'>${location.locname}: ${location.locstreetaddress}, ${location.loccity}</option>`
+                    `<option value='${location.locname}'>${location.locname}: ${location.locstreetaddress}, ${location.loccity}</option>`
         }
     }
 
