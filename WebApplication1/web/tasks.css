@@ -113,7 +113,7 @@ button {
   font-size: 16px;
 }
 .main .nav .searchbox input {
-  display: inlin-block;
+  display: inline-block;
   width: 120px;
   background-color: White;
   color: Black;
