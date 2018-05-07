@@ -6,6 +6,7 @@ let tasksContent = document.querySelector("#tasks-content");
 let logsContent = document.querySelector("#logs-content");
 
 
+
 tasksBtn.classList.add("active");
 logsView.classList.add("hidden");
 logsContent.classList.add("hidden");

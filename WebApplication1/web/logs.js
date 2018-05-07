@@ -499,3 +499,15 @@ const locationsFetch = locations => {
 
     document.querySelector('#select-location').innerHTML = htmlString
 }
+
+
+//POST work log
+const form = document.querySelector('#my-form')
+
+form.onsubmit = e => {
+    e.preventDefault()
+
+    const formData = new FormData(form)
+
+    console.log(formData)
+}
