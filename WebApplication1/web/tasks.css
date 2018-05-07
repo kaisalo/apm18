@@ -12,7 +12,11 @@ body {
     font-size: 18px;
 }
 
-a {
+.hidden {
+    display: none;
+}
+
+button {
     color: #0060B6;
     text-decoration: none;
 }
@@ -79,12 +83,17 @@ a {
     width: 100%;
     height: 100%;
     clear: both;
+    display: grid;
+    grid-template-columns: 200px auto;
+    grid-template-rows: 100%;
+    grid-template-areas:
+        "nav" "content";
     background-color: white;
 }
 .main .nav {
-    width: 200px;
     height: 100%;
     float: left;
+    grid-area: "nav";
     background-color: rgba(227, 234, 235, 0.8);
 }
 .main .nav .searchbox {
@@ -122,10 +131,10 @@ a {
     font-size: 1em;
     text-transform: uppercase;
 }
-.main .nav .menu ul {
+.main .nav .menu {
     padding-left: 0px;
 }
-.main .nav .menu ul li {
+.main .nav .menu button {
     cursor: pointer;
     list-style: none;
     margin: 5px 0px;
@@ -138,19 +147,20 @@ a {
     border-radius: 4px;
     transition: 0.25s all;
 }
-.main .nav .menu ul li.active {
+.main .nav .menu button.active {
     background-color: #79bc46;
 }
-.main .nav .menu ul li:hover {
+.main .nav .menu button:hover {
     background-color: #999;
 }
-.main .nav .menu ul li i {
+.main .nav .menu i {
     font-size: 1.4em;
     margin-right: 10px;
 }
 .main .view {
-    position: relative;
-    margin-left: 200px;
+    /*position: relative;
+    margin-left: 200px;*/
+    grid-area: "content";
 }
 .main .view .viewHeader {
     width: 100%;
@@ -200,13 +210,16 @@ a {
     padding-right: 16px;
 }
 .main .view .content {
-    position: absolute;
-    left: 0px;
-    top: 70px;
-    right: 0px;
-    bottom: 0px;
     padding: 10px;
+    width: inherit;
 }
+
+.main .view .content .list {
+    position: relative;
+    width: 100%;
+}
+
+
 .main .view .content .list .title {
     width: 100%;
     padding: 10px;
@@ -216,7 +229,7 @@ a {
 }
 .main .view .content .list ul {
     width: 100%;
-    padding-left: 10px;
+    padding-left: 0px;
     color: #777;
 }
 .main .view .content .list ul li {
@@ -224,7 +237,8 @@ a {
     line-height: 50px;
     list-style: none;
     border-top: 1px solid #aaa;
-    padding: 0 5px;
+    padding: 0px;
+    width: 100%;
 }
 .main .view .content .list ul li.checked {
     background-color: #f0f4f5;

@@ -28,3 +28,5 @@ logs/
 =======
 /.nb-gradle/
 >>>>>>> 780034cddfaf9b72a72d8e04c7e9d524d691ee89
+/WebApplication1/dist/
+/WebApplication1/nbproject/private/
