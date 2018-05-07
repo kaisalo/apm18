@@ -9,51 +9,39 @@ document.addEventListener("DOMContentLoaded", function () {
         if (hour < 10) {
             hour = "0" + hour;
         }
-
         let minute = day.getMinutes();
-
         if (minute < 10) {
             minute = "0" + minute;
         }
-
         let currentHour = hour + ":" + minute;
-
         return currentHour;
     } // Get current hour and minute
 
     function getDate() {
-
         let day = new Date();
-
         let date = day.getDate();
         if (date < 10) {
             date = '0' + date;
         }
-
         let month = day.getMonth();
         if (month < 10) {
             month = "0" + month;
         }
-
         let year = day.getFullYear();
-
         let currentDate = date + '/' + month + '/' + year;
-
         return currentDate;
     } // Get current day - month - year
 
     function addButton() {
         document.getElementById("hidden-add-form").style.visibility = "visible";
-    }
-    ; //The plus sign button that shows the form
+    }; //The plus sign button that shows the form
 
     function cancelButton() {
         document.getElementById("hidden-add-form").style.visibility = "hidden";
         document.getElementById("my-form").reset();
 
         /* document.getElementById('urgent-btn').checked = false; */
-    }
-    ; // The X sign button that cancel add task in the form
+    }; // The X sign button that cancel add task in the form
 
 
     function previewFile() {
@@ -63,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         reader.onloadend = function () {
             preview.src = reader.result;
-        }
+        };
 
         if (file) {
             reader.readAsDataURL(file); //reads the data as a URL
@@ -74,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }  // Function that allows uploader preview image in the task when it's uploaded
 
-    function addTask() {
+    function addLog() {
 
         let ul = document.getElementById("list");
         /* let ulNew = document.getElementById("new-list"); */
@@ -432,16 +420,16 @@ document.addEventListener("DOMContentLoaded", function () {
             .catch(err => console.log(err))
 
     const logsFetch = logs => {
-        let htmlString = ''
-        let taskDesc = ''
-        let taskName = ''
+        let htmlString = '';
+        let taskDesc = '';
+        let taskName = '';
 
         for (let log of logs) {
             fetch(apiUrl + 'task/' + log.taskid)
                     .then(res => res.json())
                     .then(json => {
-                        taskName = json.taskname
-                        taskDesc = json.taskdescription
+                        taskName = json.taskname;
+                        taskDesc = json.taskdescription;
                         htmlString +=
                                 `<li class="task-on-list task-on-${log.worklogid}">
                         <h3 id="task-header">${log.workdescription}</h3>
@@ -458,7 +446,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     .catch(err => console.log(err))
         }
 
-    }
+    };
 
 
 // Fetch clients
@@ -468,48 +456,44 @@ document.addEventListener("DOMContentLoaded", function () {
             .catch(err => console.log(err))
 
     const clientsFetch = clients => {
-        let htmlString = `<option value='' selected disabled ></option>`
-
+        let htmlString = `<option value='' selected disabled ></option>`;
         for (let client of clients) {
             htmlString +=
-                    `<option value="${client.clientid}">${client.clientname}</option>`
+                    `<option value="${client.clientid}">${client.clientname}</option>`;
         }
-
-        document.querySelector('#select-client').innerHTML = htmlString
+        document.querySelector('#select-client').innerHTML = htmlString;
     }
-
+    ;
 //Fetch locations based on client selections
 
     const getLocations = () => {
         fetch(apiUrl + 'location')
                 .then(res => res.json())
                 .then(json => locationsFetch(json))
-                .catch(err => console.log(err))
-    }
+                .catch(err => console.log(err));
+    };
 
     const locationsFetch = locations => {
-        let htmlString = ''
-        let clientSelected = document.querySelector('#select-client').value
-        console.log(clientSelected)
+        let htmlString = '';
+        let clientSelected = document.querySelector('#select-client').value;
+        console.log(clientSelected);
         for (let location of locations) {
             if (location.clientid == clientSelected) {
                 htmlString +=
-                        `<option value='${location.locname}'>${location.locname}: ${location.locstreetaddress}, ${location.loccity}</option>`
+                        `<option value='${location.locname}'>${location.locname}: ${location.locstreetaddress}, ${location.loccity}</option>`;
             }
         }
 
-        document.querySelector('#select-location').innerHTML = htmlString
+        document.querySelector('#select-location').innerHTML = htmlString;
     }
 
 
 //POST work log
-    const form = document.querySelector('#my-form')
+    const form = document.querySelector('#my-form');
 
     form.onsubmit = e => {
-        e.preventDefault()
-
-        const formData = new FormData(form)
-
-        console.log(formData)
+        e.preventDefault();
+        const formData = new FormData(form);
+        console.log(formData);
     }
 });

@@ -21,7 +21,7 @@ button {
   text-decoration: none;
 }
 
-.page {
+/*.page {
   position: absolute;
   width: 80%;
   height: 80%;
@@ -34,7 +34,7 @@ button {
   -moz-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
   -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
-}
+}*/
 
 .pageHeader {
   width: 100%;
@@ -85,7 +85,7 @@ button {
   clear: both;
   display: grid;
   grid-template-columns: 200px auto;
-  grid-template-rows: 100%;
+  grid-template-rows: inherit;
   grid-template-areas: "nav" "content";
   background-color: white;
 }
@@ -243,6 +243,7 @@ button {
 .main .view .content {
   padding: 10px;
   width: inherit;
+  height: 100%;
 }
 
 .main .view .content .list {
