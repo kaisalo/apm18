@@ -14,39 +14,26 @@
     font-weight: 300;
 }
 
-#task-list {
-    position: relative;
-    height: 93%;
-    -webkit-box-shadow: -0.063em 0.125em 1.188em 0.188em rgba(0,0,0,0.75);
-    -moz-box-shadow: -0.063em 0.125em 1.188em 0.188em rgba(0,0,0,0.75);
-    box-shadow: -0.063em 0.125em 1.188em 0.188em rgba(0,0,0,0.75);
+#logs-content .task-on-list {
+    display: grid;
+    grid-template-columns: 20% 70% 10%;
 }
 
 #list, #new-list, #cplt-list, #cancel-list, #in-process-list {
+    position: relative;
     overflow: auto;
-    height: 24.24em;
-    padding: 1em;
-    width: 93%;
+    height: auto;
+    padding: 0;
+    width: 100%;
     margin: auto;
 }
 
 .task-on-list, .task-cancelled, .task-cplted, .task-new {
     position: relative;
-    margin: 1em;
-    padding: 0.625em;
+    margin: 0;
+    padding: 0;
     list-style: none;
-    border: 1px solid #878787;
-    -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);
-    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);
-}
-
-#waiting-task {
-    z-index: 1;
-}
-
-#finished-task{
-    z-index: 0;
+    border-bottom: 1px solid gray;
 }
 
 .add-btn{

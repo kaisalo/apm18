@@ -1,6 +1,17 @@
 document.addEventListener("DOMContentLoaded", function () {
     let taskArray = [];
     let count = 0;
+    let newLogBtn = document.querySelector("#new-log");
+    let cancelBtn = document.querySelector("#cancel");
+    
+    newLogBtn.addEventListener("click", function(event) {
+        addButton();
+    });
+    
+    cancelBtn.addEventListener("click", function(event) {
+        cancelButton();
+        return false;
+    });
 
     function getHour() {
         let day = new Date();
@@ -9,51 +20,39 @@ document.addEventListener("DOMContentLoaded", function () {
         if (hour < 10) {
             hour = "0" + hour;
         }
-
         let minute = day.getMinutes();
-
         if (minute < 10) {
             minute = "0" + minute;
         }
-
         let currentHour = hour + ":" + minute;
-
         return currentHour;
     } // Get current hour and minute
 
     function getDate() {
-
         let day = new Date();
-
         let date = day.getDate();
         if (date < 10) {
             date = '0' + date;
         }
-
         let month = day.getMonth();
         if (month < 10) {
             month = "0" + month;
         }
-
         let year = day.getFullYear();
-
         let currentDate = date + '/' + month + '/' + year;
-
         return currentDate;
     } // Get current day - month - year
 
     function addButton() {
         document.getElementById("hidden-add-form").style.visibility = "visible";
-    }
-    ; //The plus sign button that shows the form
+    }; //The plus sign button that shows the form
 
     function cancelButton() {
         document.getElementById("hidden-add-form").style.visibility = "hidden";
         document.getElementById("my-form").reset();
 
         /* document.getElementById('urgent-btn').checked = false; */
-    }
-    ; // The X sign button that cancel add task in the form
+    }; // The X sign button that cancel add task in the form
 
 
     function previewFile() {
@@ -63,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         reader.onloadend = function () {
             preview.src = reader.result;
-        }
+        };
 
         if (file) {
             reader.readAsDataURL(file); //reads the data as a URL
@@ -74,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }  // Function that allows uploader preview image in the task when it's uploaded
 
-    function addTask() {
+    function addLog() {
 
         let ul = document.getElementById("list");
         /* let ulNew = document.getElementById("new-list"); */
@@ -84,7 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let departmentValue = document.querySelector("#select-department").value;
         let desciptionValue = document.querySelector("#description").value;
 
-        let li = document.createElement("li");
+        let li = document.createElement("div");
 
         li.setAttribute("class", "task-on-list");
 
@@ -200,7 +199,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
         let ulAll = document.getElementById("list");
         let checkAllList = ulAll.children;
-
         for (let b = 0; b < checkAllList.length; b++) {
 
             let newListClass = checkAllList[b].classList;
@@ -427,38 +425,59 @@ document.addEventListener("DOMContentLoaded", function () {
     fetch(apiUrl + 'worklog')
             .then(res => res.json())
             .then(function (json) {
-                logsFetch(json)
+                console.log(json);
+                logsFetch(json);
             })
-            .catch(err => console.log(err))
+            .catch(err => console.log(err));
 
     const logsFetch = logs => {
-        let htmlString = ''
-        let taskDesc = ''
-        let taskName = ''
+        let htmlString = '';
+        let taskDesc = '';
+        let taskName = '';
 
         for (let log of logs) {
             fetch(apiUrl + 'task/' + log.taskid)
                     .then(res => res.json())
                     .then(json => {
-                        taskName = json.taskname
-                        taskDesc = json.taskdescription
+                        let taskName = json.taskname;
+                        let taskDesc = json.taskdescription;
+                        
+                        /*let div = document.createElement("div");
+                        div.classList.add("task-on-list");
+                        
+                        // let logID = document.createElement("div");
+                        // let workDesc = document.createElement("div");
+                        let logDate = document.createElement("div");
+                        let hours = document.createElement("div");
+                        let kilometres = document.createElement("div");
+                        let taskNameDiv = document.createElement("div");
+                        
+                        logDate.value = log.date;
+                        hours.value = log.hours;
+                        kilometres.value = log.kilometres;
+                        taskNameDiv.value = taskName;
+                        
+                        div.appendChild(logDate);
+                        div.appendChild(taskName);
+                        div.appendChild(hours);
+                        div.appendChild(kilometres);
+                        */
+                        let dateString = log.date;
+                        let dateStr = dateString.split("-");
+                        let dayStr = dateStr[2].split("T");
+                        console.log(dateStr);
                         htmlString +=
-                                `<li class="task-on-list task-on-${log.worklogid}">
-                        <h3 id="task-header">${log.workdescription}</h3>
-                        <p><strong>Hours: </strong>${log.hours}</p>
-                        <p><strong>Kilometres: </strong>${log.kilometres}</p>
-                        <p><strong>Parking hours: </strong>${log.parking}</p>
-                        <p><strong>Work description: </strong>${log.workdescription}</p>
-                        <p><strong>Task name: </strong>${taskName}</p>
-                        <p><strong>Task description: </strong>${taskDesc}</p>
-                        <p>${log.date}</p>
-                    </li>`
-                        document.querySelector('#waiting-task').innerHTML = htmlString
+                                `<div class="task-on-list task-on-${log.worklogid}">
+                                <div><p>${dayStr[0]}.${dateStr[1]}.${dateStr[0]}</p></div>
+                                <div><p>${taskName}</p></div>
+                                <div><p>${log.hours}</p></div>  
+                            </div>` ;
+                        document.querySelector('#waiting-task').innerHTML = htmlString;
                     })
-                    .catch(err => console.log(err))
+                    .catch(err => console.log(err));
         }
 
-    }
+    };
 
 
 // Fetch clients
@@ -470,49 +489,46 @@ document.addEventListener("DOMContentLoaded", function () {
             .catch(err => console.log(err));
 
     const clientsFetch = clients => {
-        let htmlString = `<option value='' selected disabled ></option>`
-
+        let htmlString = `<option value='' selected disabled ></option>`;
         for (let client of clients) {
             htmlString +=
-                    `<option value="${client.clientid}">${client.clientname}</option>`
+                    `<option value="${client.clientid}">${client.clientname}</option>`;
         }
 
-        //THERE IS SOMETHING WRONG AND IT MESSES MY TASK.JS TESTING SO I COMMENTED IT OUT TIL YOU FIGURE OUT WHAT'S WRONG
-       // document.querySelector('#select-client').innerHTML = htmlString
-    }
+        document.querySelector('#select-client').innerHTML = htmlString;
 
+    }
+    ;
 //Fetch locations based on client selections
 
     const getLocations = () => {
         fetch(apiUrl + 'location')
                 .then(res => res.json())
                 .then(json => locationsFetch(json))
-                .catch(err => console.log(err))
-    }
+                .catch(err => console.log(err));
+    };
 
     const locationsFetch = locations => {
-        let htmlString = ''
-        let clientSelected = document.querySelector('#select-client').value
-        console.log(clientSelected)
+        let htmlString = '';
+        let clientSelected = document.querySelector('#select-client').value;
+        console.log(clientSelected);
         for (let location of locations) {
             if (location.clientid == clientSelected) {
                 htmlString +=
-                        `<option value='${location.locname}'>${location.locname}: ${location.locstreetaddress}, ${location.loccity}</option>`
+                        `<option value='${location.locname}'>${location.locname}: ${location.locstreetaddress}, ${location.loccity}</option>`;
             }
         }
 
-        document.querySelector('#select-location').innerHTML = htmlString
+        document.querySelector('#select-location').innerHTML = htmlString;
     }
 
 
 //POST work log
-    const form = document.querySelector('#my-form')
+    const form = document.querySelector('#my-form');
 
     form.onsubmit = e => {
-        e.preventDefault()
-
-        const formData = new FormData(form)
-
-        console.log(formData)
+        e.preventDefault();
+        const formData = new FormData(form);
+        console.log(formData);
     }
 });
