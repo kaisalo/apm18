@@ -46,81 +46,116 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     ; // The X sign button that cancel add task in the form
 
-//IN PROGRESS
+    //IN PROGRESS
     let apiURL = 'wr/';
+    let htmlString = '';
+    let clientName = '';
+    let clientID;
+    let locationName = '';
+    let locClientID;
+    let taskNum = 0;
+    let clientList = [];
+    let clientIdList = [];
+    let locationList = [];
+    let taskList = [];
+    let button = false;
+
     fetch(apiURL + 'client')
-            .then(resc => resc.json())
-            .then(function (json) {
-                clientsFetch(json);
-            })
-            .catch(err => console.log(err));
+        .then(resc => resc.json())
+        .then(function (json) {
+            cliFetch(json);
+        })
+        .catch(err => console.log(err));
 
 
-    const cliFetch = clients => {
-        let htmlString = '';
-        let clientName = '';
-        let locName = '';
-        let taskNum = 0;
-        let button = false;
+    let cliFetch = clients => {
 
         for (let client of clients) {
-            console.log(client);
+
             fetch(apiURL + 'client/' + client.clientid)
-                    .then(resc => resc.json())
-                    .then(json => {
-                        clientName = json.clientname;
-                        htmlString += `<div class ="title">${clientName}</div>
-                        <ul>
-                            <li class="checked">`;
-                        let locationFetch = locs => {
+                //.then(resc => resc.json())
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(json => {
 
+                    clientName = json.clientname;
+                    clientList.push(clientName);
 
-                            for (let loc of locs) {
-                                fetch(apiURL + 'location/' + loc.locationID)
-                                        .then(resl => resl.json())
-                                        .then(json => {
-                                            locName = json.locname;
-                                            htmlString += `<span>${locName}</span>
-                                        <div class="info">`;
+                    clientID = json.clientid;
+                    clientIdList.push(clientID);
 
-                                            let taskFetch = tasks => {
+                    /*console.log(clientList);
+                    console.log(clientIdList);
+                    console.log(clientList.length);*/
+                    fetch(apiURL + 'location')
+                        .then(resc => resc.json())
+                        .then(function (json) {
+                            locsFetch(json);
+                        })
+                        .catch(err => console.log(err));
+                });
 
-                                                for (let task of tasks) {
-                                                    fetch(apiURL + 'task/' + taskid)
-                                                            .then(rest => rest.json())
-                                                            .then(json => {
-                                                                taskNum++;
-                                                                button = true;
-
-                                                            })
-                                                            .catch(err => console.log(err));
-
-                                                }
-                                                if (button) {
-                                                    htmlString += `<div class = "button green">Finished</div>`;
-                                                } else {
-                                                    htmlString += `<div class = "button">Tasks: ${taskNum}</div>`;
-                                                }
-                                            };
-
-                                        })
-                                        .catch(err => console.log(err));
-
-                            }
-                        };
-                        htmlString += `</div>
-                    </li>
-                    </ul>`;
-                        document.querySelector('#locstest').innerHTML = htmlString;
-
-                    })
-                    .catch(err => console.log(err));
-        }
+        };
 
     };
+
+    let locsFetch = locations => {
+        //   for (let loc of locations) {
+        fetch(apiURL + 'location/')//+ loc.locid)
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (myjson) {
+                for (let i = 0; i < clientIdList.length; i++) {
+                    htmlString += `<div class = "title">` + clientList[i] + `</div>
+                    <ul>`;
+                    for (let j of myjson) {
+                        console.log(clientIdList[i])
+                        console.log(j.locname)
+                        locationName = j.locname;
+                        if (j.clientid === clientIdList[i]) {
+                            htmlString += `<li>
+                            <span>`+locationName+`</span>
+                            </li>`;
+                        }
+
+                    }
+                }
+                htmlString += `</ul>
+                </div>`;
+
+                document.getElementById('locstest').innerHTML = htmlString;
+
+
+                /* locName = myjson.locname;
+                 locClientID = myjson.clientID;
+                 // console.log(clientIdList.length);
+                 console.log(myjson.clientid);
+                 for (let j of myjson) {
+                     k = j;
+                     let jidnum = k.clientid;
+                 }
+                 for (let i of clientIdList) {
+                     let idnum = clientIdList[i];
+
+
+                 }*/
+
+
+                /*htmlString += `<div class ="title">${clientName}</div>
+                                        <ul>
+                                        <li class="checked">`;
+                                    document.getElementById('locstest').innerHTML = htmlString;*/
+
+
+
+                //  })
+            });
+    }
     /* document.getElementById('urgent-btn').checked = false; */
 
 
 
-// The X sign button that cancel add task in the form
+    // The X sign button that cancel add task in the form
 });

@@ -464,8 +464,10 @@ document.addEventListener("DOMContentLoaded", function () {
 // Fetch clients
     fetch(apiUrl + 'client')
             .then(res => res.json())
-            .then(json => clientsFetch(json))
-            .catch(err => console.log(err))
+            .then(json => {
+                clientsFetch(json)
+    })
+            .catch(err => console.log(err));
 
     const clientsFetch = clients => {
         let htmlString = `<option value='' selected disabled ></option>`
@@ -475,7 +477,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     `<option value="${client.clientid}">${client.clientname}</option>`
         }
 
-        document.querySelector('#select-client').innerHTML = htmlString
+        //THERE IS SOMETHING WRONG AND IT MESSES MY TASK.JS TESTING SO I COMMENTED IT OUT TIL YOU FIGURE OUT WHAT'S WRONG
+       // document.querySelector('#select-client').innerHTML = htmlString
     }
 
 //Fetch locations based on client selections
