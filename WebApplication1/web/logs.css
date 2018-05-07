@@ -24,7 +24,7 @@
 
 #list, #new-list, #cplt-list, #cancel-list, #in-process-list {
     overflow: auto;
-    height: 31.488em;
+    height: 24.24em;
     padding: 1em;
     width: 93%;
     margin: auto;
