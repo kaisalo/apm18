@@ -131,11 +131,12 @@ button {
   text-align: left;
   font-weight: 600;
   font-size: .9em;
-  width: 100%;
+  width: 90%;
   transition: 0.25s all;
   border-radius: 4px;
   padding: 5px;
   margin-right: 15px;
+  margin: 5px 0;
   border: none;
 }
 .main .nav .menu button.active {
