@@ -70,9 +70,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let cliFetch = clients => {
 
-        for (let client of clients) {
+//        for (let client of clients) {
 
-            fetch(apiURL + 'client/' + client.clientid)
+            fetch(apiURL + 'client/' )//+ client.clientid)
                 //.then(resc => resc.json())
                 .then(function (response) {
                     return response.json();
@@ -85,9 +85,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     clientID = json.clientid;
                     clientIdList.push(clientID);
 
-                    /*console.log(clientList);
-                    console.log(clientIdList);
-                    console.log(clientList.length);*/
                     fetch(apiURL + 'location')
                         .then(resc => resc.json())
                         .then(function (json) {
@@ -96,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         .catch(err => console.log(err));
                 });
 
-        };
+      //  };
 
     };
 
@@ -111,8 +108,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     htmlString += `<div class = "title">` + clientList[i] + `</div>
                     <ul>`;
                     for (let j of myjson) {
-                        console.log(clientIdList[i])
-                        console.log(j.locname)
+                        //console.log(clientIdList[i])
+                       // console.log(j.locname)
+
                         locationName = j.locname;
                         if (j.clientid === clientIdList[i]) {
                             htmlString += `<li>
@@ -126,6 +124,18 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>`;
 
                 document.getElementById('locstest').innerHTML = htmlString;
+
+
+            });
+    }
+   
+});
+ /* document.getElementById('urgent-btn').checked = false; */
+
+
+
+    // The X sign button that cancel add task in the form
+
 
 
                 /* locName = myjson.locname;
@@ -151,11 +161,3 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
                 //  })
-            });
-    }
-    /* document.getElementById('urgent-btn').checked = false; */
-
-
-
-    // The X sign button that cancel add task in the form
-});
